@@ -36,7 +36,7 @@ def main():
     secret = encode(message, key)
     print ("Encrypted:", secret)
     Decrypted = decode(secret, key)
-    print ("Decrypted:", Decrypted)
+    print ("Decrypted:", Decrypted.lower())
 
 
 if __name__ == '__main__':
