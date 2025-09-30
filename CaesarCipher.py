@@ -18,15 +18,16 @@ def encode(message, key):
 
     return secret
 
-def decode(message, key):
-    message = message.lower()
-    Decrypted = ""
-    for ch in message:
-        if ch <():
-            Decrypted += chr((ord(ch) - key - 97) % 26+97)
-        else:
-            Decrypted += ch
-    return Decrypted
+def decode(secret, key):
+   alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+   Decrypted = ""
+   for letter in secret:
+        if (alpha.find(letter) >= 0): #check to see if the letter is actually a letter
+            spot = (alpha.find(letter) - key) % 26
+            Decrypted = Decrypted + alpha[spot]
+        else: # letter must have been a number, symbol, or punctuation.
+                Decrypted = Decrypted + letter
+   return Decrypted
     #We will want to decode the message here.
 def main():
     message = input("Enter a message: ")
@@ -34,8 +35,8 @@ def main():
 
     secret = encode(message, key)
     print ("Encrypted:", secret)
-    plaintext = decode(secret, key)
-    print ("Decrypted:", plaintext)
+    Decrypted = decode(secret, key)
+    print ("Decrypted:", Decrypted)
 
 
 if __name__ == '__main__':
